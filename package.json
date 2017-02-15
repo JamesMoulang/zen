@@ -43,6 +43,7 @@
     "socket.io-client": "^1.7.2",
     "uid": "0.0.2",
     "underscore": "^1.8.3",
+    "underscore.string": "^3.3.4",
     "utf-8-validate": "^1.2.1",
     "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4",

@@ -1,31 +1,49 @@
 "use strict"
 
-/*
-  A ping pong bot, whenever you send "ping", it replies "pong".
-*/
-
-// import the discord.js module
+const _ = require('underscore');
+const _s = require('underscore.string');
 const Discord = require('discord.js');
-
-// create an instance of a Discord Client, and call it bot
 const bot = new Discord.Client();
-
-// the token of your bot - https://discordapp.com/developers/applications/me
+// Ask James for this file. Put it in the same directory as index.js
 const token = require('./token');
 
-// the ready event is vital, it means that your bot will only start reacting to information
-// from Discord _after_ ready is emitted.
 bot.on('ready', () => {
-  console.log('Experience tranquility.');
+  console.log('My ultimate (receive discord server events) is fully charged!');
 });
 
-// create an event listener for messages
+const MessageRouter = require('./MessageRouter');
+const MessageRoute = require('./MessageRoute');
+
 bot.on('message', message => {
-  // if the message is "ping",
-  if (message.content === 'ping') {
-    // send "pong" to the same channel.
-    message.channel.sendMessage('pong');
-  }
+  // if (message.content === 'ping') {
+  //   message.channel.sendMessage('pong');
+  // }
+
+  // if (message.content.indexOf('!repeat ') > -1) {
+  // 	message.channel.sendMessage(message.content.replace('!repeat', ''));
+  // }
+
+  const router = MessageRoute(
+  	/!.*/, 
+  	/!/,
+  	MessageRoute(
+		/repeat.*/, 
+		/repeat /,
+		(msg) => {
+			console.log(msg.content);
+			message.channel.sendMessage(msg.content);
+		}
+	),
+	MessageRoute(
+		/reverse.*/, 
+		/reverse /,
+		(msg) => {
+			console.log(msg.content);
+			message.channel.sendMessage(_s.reverse(msg.content));
+		}
+	)
+  );
+  router(message);
 });
 
 // log our bot in
