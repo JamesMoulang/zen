@@ -11,7 +11,6 @@ bot.on('ready', () => {
   console.log('My ultimate (receive discord server events) is fully charged!');
 });
 
-const MessageRouter = require('./MessageRouter');
 const MessageRoute = require('./MessageRoute');
 
 bot.on('message', message => {
