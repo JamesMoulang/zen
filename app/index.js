@@ -40,3 +40,16 @@ bot.on('message', message => {
 
 // log our bot in
 bot.login(token);
+
+// This is just a hack so heroku won't complain about ports not binding. lol.
+var express = require('express');
+var app = express();
+app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname, 'app', 'index.html'));
+});
+
+var server = require('http').createServer(app);
+
+server.listen(process.env.PORT || 3000, function() {
+  console.log("listening on port 3000");
+});
