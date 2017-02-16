@@ -17,6 +17,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "bufferutil": "^1.2.1",
     "console": "^0.5.2",
+    "cross-env": "^3.1.4",
     "discord.js": "^11.0.0",
     "eventsource-polyfill": "^0.9.6",
     "expose-loader": "^0.7.1",
