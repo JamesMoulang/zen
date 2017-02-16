@@ -43,6 +43,7 @@ bot.login(token);
 
 // This is just a hack so heroku won't complain about ports not binding. lol.
 var express = require('express');
+var path = require('path');
 var app = express();
 app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'app', 'index.html'));
