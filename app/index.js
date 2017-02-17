@@ -46,7 +46,7 @@ var express = require('express');
 var path = require('path');
 var app = express();
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, 'app', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 var server = require('http').createServer(app);
@@ -54,3 +54,8 @@ var server = require('http').createServer(app);
 server.listen(process.env.PORT || 3000, function() {
   console.log("listening on port 3000");
 });
+
+var http = require("http");
+setInterval(function() {
+    http.get("http://zenyatta-discord.herokuapp.com/");
+}, 300000);
